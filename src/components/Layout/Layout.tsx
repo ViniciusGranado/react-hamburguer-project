@@ -1,4 +1,5 @@
 import React from 'react'
+import './Layout.css'
 
 export const Layout = (props: any) => {
   return (
@@ -7,7 +8,7 @@ export const Layout = (props: any) => {
         Toolbar, Sidedrawer, Backdrop
       </div>
 
-      <main>
+      <main className='Content'>
         {props.children}
       </main>
     </>
