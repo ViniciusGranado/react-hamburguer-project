@@ -4,16 +4,22 @@ import { BurgerIngredient } from './BurgerIngredient/BurgerIngredient';
 import './Burger.css';
 
 export const Burger = (props: any) => {
-  const transformedIngredients = Object.keys(props.ingredients)
+  let transformedIngredients: JSX.Element[] | JSX.Element = Object.keys(props.ingredients)
     .map((igKey) => {
       return [...Array(props.ingredients[igKey])].map((item, index) => {
         return (
           <BurgerIngredient key={igKey + index} type={igKey} />
         );
-      })
-    });
+      });
+    })
+    .reduce((acc, cur) => {
+      return acc.concat(cur);
+    }, []);
 
-  console.log(transformedIngredients);
+  if (!transformedIngredients.length) {
+    transformedIngredients = <p>Please start adding ingredients!</p>
+  } 
+
   return (
     <div className='Burger'>
       <BurgerIngredient type='bread-top'/>
