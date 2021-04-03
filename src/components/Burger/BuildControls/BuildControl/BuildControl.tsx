@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './BuildControl.css';
+
 export const BuildControl = (props: any) => {
   return (
     <div className='BuildControl'>
