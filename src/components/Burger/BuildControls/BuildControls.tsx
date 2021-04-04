@@ -15,7 +15,7 @@ export const BuildControls = (props: any) => {
     },
     {
       label: 'Chesse',
-      type: 'chesse',
+      type: 'cheese',
     },
     {
       label: 'Meat',
@@ -27,7 +27,11 @@ export const BuildControls = (props: any) => {
   return (
     <div className='BuildControls'>
       {controls.map((item) => {
-        return <BuildControl key={item.label} label={item.label}/>
+        return <BuildControl 
+                  key={item.label}
+                  label={item.label}
+                  added={() => props.ingredientAdded(item.type)}
+                />
       })}
     </div>
   );
