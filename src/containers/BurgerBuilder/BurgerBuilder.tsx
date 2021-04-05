@@ -19,7 +19,7 @@ export const BurgerBuilder = () => {
       ingredients: {
         salad: 0,
         bacon: 0,
-        cheese: 2,
+        cheese: 0,
         meat: 0,
       },
       totalPrice: 4,
@@ -62,13 +62,51 @@ export const BurgerBuilder = () => {
   }
 
   const removeIngredientHandler = (type: string) => {
+    const oldCount = burgerState.ingredients[type];
+
+    if (oldCount <= 0) return;
+
+    const updatedCount = oldCount - 1;
+
+    const updatedIngredients = {
+      ...burgerState.ingredients
+    };
+
+    updatedIngredients[type] = updatedCount;
+
+    const priceDeduction = INGREDIENT_PRICES[type];
+    const oldPrice = burgerState.totalPrice;
+    const newPrice = oldPrice - priceDeduction;
+    
+    setBurgerState({
+      ingredients: updatedIngredients,
+      totalPrice: newPrice,
+    });
   }
   
+  interface IDisabledInfo {
+    [salad: string]: number | boolean
+    bacon: number| boolean
+    cheese: number| boolean
+    meat:  number| boolean
+  }
+
+  const disabledInfo: IDisabledInfo = {
+    ...burgerState.ingredients,
+  };
+
+  for (let key in disabledInfo) {
+    disabledInfo[key] = disabledInfo[key] <= 0;
+  }
+
   return (
     <>
       <Burger ingredients={burgerState.ingredients}/>
       <BuildControls 
-        ingredientAdded={addIngredientHandler}/>
+        ingredientAdded={addIngredientHandler}
+        ingredientRemoved={removeIngredientHandler}
+        disabled={disabledInfo}
+      />
     </>
   );
 }
