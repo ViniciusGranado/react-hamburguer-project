@@ -36,6 +36,7 @@ export const BuildControls = (props: any) => {
                   disabled={props.disabled[item.type]}
                 />
       })}
+      <button className='OrderButton' disabled={!props.purchasable}>ORDER NOW</button>
     </div>
   );
 }

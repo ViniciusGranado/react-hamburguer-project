@@ -12,6 +12,7 @@ export const BurgerBuilder = () => {
   interface IBurger {
     ingredients: IBurguerIngredients
     totalPrice: number
+    purchasable: boolean
   }
   
   const [burgerState, setBurgerState] = useState<IBurger>(
@@ -23,9 +24,21 @@ export const BurgerBuilder = () => {
         meat: 0,
       },
       totalPrice: 4,
+      purchasable: false,
     }
   );
 
+  const updatePurchaseState = (ingredients: any) => {
+    const sumIngredients = Object.keys(ingredients).reduce((acc, cur) => {
+      return acc + ingredients[cur];
+    }, 0);
+
+    setBurgerState({
+      ...burgerState,
+      ingredients: ingredients,
+      purchasable: sumIngredients > 0,
+    });
+  }
 
   interface IINGREDIENT_PRICES {
     [salad: string]: number,
@@ -56,9 +69,12 @@ export const BurgerBuilder = () => {
     const newPrice = oldPrice + priceAddition;
     
     setBurgerState({
+      ...burgerState,
       ingredients: updatedIngredients,
       totalPrice: newPrice,
     });
+
+    updatePurchaseState(updatedIngredients);
   }
 
   const removeIngredientHandler = (type: string) => {
@@ -79,9 +95,12 @@ export const BurgerBuilder = () => {
     const newPrice = oldPrice - priceDeduction;
     
     setBurgerState({
+      ...burgerState,
       ingredients: updatedIngredients,
       totalPrice: newPrice,
     });
+
+    updatePurchaseState(updatedIngredients);
   }
   
   interface IDisabledInfo {
@@ -107,6 +126,7 @@ export const BurgerBuilder = () => {
         ingredientRemoved={removeIngredientHandler}
         disabled={disabledInfo}
         price={burgerState.totalPrice}
+        purchasable={burgerState.purchasable}
       />
     </>
   );
