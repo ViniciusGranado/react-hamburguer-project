@@ -106,6 +106,7 @@ export const BurgerBuilder = () => {
         ingredientAdded={addIngredientHandler}
         ingredientRemoved={removeIngredientHandler}
         disabled={disabledInfo}
+        price={burgerState.totalPrice}
       />
     </>
   );
