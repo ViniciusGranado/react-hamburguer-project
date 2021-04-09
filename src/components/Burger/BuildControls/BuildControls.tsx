@@ -3,7 +3,13 @@ import { BuildControl } from './BuildControl/BuildControl'
 
 import './BuildControls.css'; 
 
-export const BuildControls = (props: any) => {
+export const BuildControls = ({
+  price,
+  ingredientAdded,
+  ingredientRemoved,
+  disabled,
+  purchasable
+} : any) => {
   const controls = [
     {
       label: 'Salad',
@@ -26,17 +32,17 @@ export const BuildControls = (props: any) => {
 
   return (
     <div className='BuildControls'>
-      <p>Current Price: <strong>U${props.price.toFixed(2)}</strong></p>
+      <p>Current Price: <strong>U${price.toFixed(2)}</strong></p>
       {controls.map((item) => {
         return <BuildControl 
                   key={item.label}
                   label={item.label}
-                  added={() => props.ingredientAdded(item.type)}
-                  removed={() => props.ingredientRemoved(item.type)}
-                  disabled={props.disabled[item.type]}
+                  added={() => ingredientAdded(item.type)}
+                  removed={() => ingredientRemoved(item.type)}
+                  disabled={disabled[item.type]}
                 />
       })}
-      <button className='OrderButton' disabled={!props.purchasable}>ORDER NOW</button>
+      <button className='OrderButton' disabled={!purchasable}>ORDER NOW</button>
     </div>
   );
 }

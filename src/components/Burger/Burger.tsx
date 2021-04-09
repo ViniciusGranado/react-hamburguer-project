@@ -3,10 +3,12 @@ import { BurgerIngredient } from './BurgerIngredient/BurgerIngredient';
 
 import './Burger.css';
 
-export const Burger = (props: any) => {
-  let transformedIngredients: JSX.Element[] | JSX.Element = Object.keys(props.ingredients)
+export const Burger = ({
+  ingredients,
+}: any) => {
+  let transformedIngredients: JSX.Element[] | JSX.Element = Object.keys(ingredients)
     .map((igKey) => {
-      return [...Array(props.ingredients[igKey])].map((item, index) => {
+      return [...Array(ingredients[igKey])].map((item, index) => {
         return (
           <BurgerIngredient key={igKey + index} type={igKey} />
         );

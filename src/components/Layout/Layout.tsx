@@ -1,7 +1,7 @@
 import React from 'react'
 import './Layout.css'
 
-export const Layout = (props: any) => {
+export const Layout = ({children }: any) => {
   return (
     <>
       <div>
@@ -9,7 +9,7 @@ export const Layout = (props: any) => {
       </div>
 
       <main className='Content'>
-        {props.children}
+        {children}
       </main>
     </>
   )

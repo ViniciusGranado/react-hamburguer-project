@@ -2,22 +2,27 @@ import React from 'react';
 
 import './BuildControl.css';
 
-export const BuildControl = (props: any) => {
+export const BuildControl = ({
+  label,
+  removed,
+  disabled,
+  added
+} : any) => {
   return (
     <div className='BuildControl'>
-      <div className='Label'>{props.label}</div>
+      <div className='Label'>{label}</div>
       
       <button
         className='Less'
-        onClick={props.removed}
-        disabled={props.disabled}
+        onClick={removed}
+        disabled={disabled}
       >
         Less
       </button>
 
       <button
         className='More'
-        onClick={props.added}
+        onClick={added}
       >
         More
       </button>
