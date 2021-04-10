@@ -1,7 +1,7 @@
 import React from 'react'
 import './Layout.css'
 
-export const Layout = ({children }: any) => {
+export const Layout = ({ children }: any) => {
   return (
     <>
       <div>
