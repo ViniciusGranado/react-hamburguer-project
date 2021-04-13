@@ -15,6 +15,7 @@ export const BurgerBuilder = () => {
     ingredients: IBurguerIngredients
     totalPrice: number
     purchasable: boolean
+    purchasing: boolean
   }
   
   const [burgerState, setBurgerState] = useState<IBurger>(
@@ -27,6 +28,7 @@ export const BurgerBuilder = () => {
       },
       totalPrice: 4,
       purchasable: false,
+      purchasing: false,
     }
   );
 
@@ -105,6 +107,13 @@ export const BurgerBuilder = () => {
     updatePurchaseState(updatedIngredients);
   }
   
+  const purchaseHandler = () => {
+    setBurgerState({
+      ...burgerState,
+      purchasing: true,
+    })
+  }
+
   interface IDisabledInfo {
     [salad: string]: number | boolean
     bacon: number| boolean
@@ -122,7 +131,7 @@ export const BurgerBuilder = () => {
 
   return (
     <>
-      <Modal>
+      <Modal show={burgerState.purchasing}>
         <OrderSummary ingredients={burgerState.ingredients}/> 
       </Modal>
       
@@ -133,6 +142,7 @@ export const BurgerBuilder = () => {
         disabled={disabledInfo}
         price={burgerState.totalPrice}
         purchasable={burgerState.purchasable}
+        ordered={purchaseHandler}
       />
     </>
   );

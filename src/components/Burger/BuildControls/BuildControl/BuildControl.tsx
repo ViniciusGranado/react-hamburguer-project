@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 
 import './BuildControl.css';
+
+interface IProps {
+  label: string
+  removed: MouseEventHandler<HTMLButtonElement>
+  added: MouseEventHandler<HTMLButtonElement>
+  disabled: any
+}
 
 export const BuildControl = ({
   label,
   removed,
+  added,
   disabled,
-  added
-} : any) => {
+} : IProps) => {
   return (
     <div className='BuildControl'>
       <div className='Label'>{label}</div>

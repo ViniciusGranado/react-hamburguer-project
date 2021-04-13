@@ -1,6 +1,17 @@
 import React from 'react';
 
-export const OrderSummary = ({ingredients}: any) => {
+interface IIngredients {
+  [salad: string]: number
+  bacon: number
+  cheese: number
+  meat:  number
+}
+
+interface IProps {
+  ingredients: IIngredients
+}
+
+export const OrderSummary = ({ingredients}: IProps) => {
   const ingredientSummary = Object.keys(ingredients)
     .map((igKey) => {
       return (

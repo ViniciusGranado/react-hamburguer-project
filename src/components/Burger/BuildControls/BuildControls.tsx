@@ -3,13 +3,30 @@ import { BuildControl } from './BuildControl/BuildControl'
 
 import './BuildControls.css'; 
 
+interface IDisabledInfo {
+  [salad: string]: number | boolean
+  bacon: number| boolean
+  cheese: number| boolean
+  meat:  number| boolean
+}
+
+interface IProps {
+  price: number
+  ingredientAdded: (type: string) => void
+  ingredientRemoved: (type: string) => void
+  disabled: IDisabledInfo
+  purchasable: boolean
+  ordered: () => void
+}
+
 export const BuildControls = ({
   price,
   ingredientAdded,
   ingredientRemoved,
   disabled,
-  purchasable
-} : any) => {
+  purchasable,
+  ordered,
+} : IProps) => {
   const controls = [
     {
       label: 'Salad',
@@ -42,7 +59,13 @@ export const BuildControls = ({
                   disabled={disabled[item.type]}
                 />
       })}
-      <button className='OrderButton' disabled={!purchasable}>ORDER NOW</button>
+      <button
+        className='OrderButton'
+        disabled={!purchasable}
+        onClick={ordered}
+      >
+        ORDER NOW
+      </button>
     </div>
   );
 }

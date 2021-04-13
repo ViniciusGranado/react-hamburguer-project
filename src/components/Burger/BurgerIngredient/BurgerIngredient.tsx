@@ -2,7 +2,11 @@ import React from 'react';
 
 import './BurgerIngredient.css';
 
-export const BurgerIngredient = ({ type }: any) => {
+interface IProps {
+  type: string
+}
+
+export const BurgerIngredient = ({ type }: IProps) => {
   let ingredient = null;
 
   switch (type) {

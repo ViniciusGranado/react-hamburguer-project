@@ -3,9 +3,20 @@ import { BurgerIngredient } from './BurgerIngredient/BurgerIngredient';
 
 import './Burger.css';
 
+interface IIngredients {
+  [salad: string]: number
+  bacon: number
+  cheese: number
+  meat:  number
+}
+
+interface IProps {
+  ingredients: IIngredients
+}
+
 export const Burger = ({
   ingredients,
-}: any) => {
+}: IProps) => {
   let transformedIngredients: JSX.Element[] | JSX.Element = Object.keys(ingredients)
     .map((igKey) => {
       return [...Array(ingredients[igKey])].map((item, index) => {
