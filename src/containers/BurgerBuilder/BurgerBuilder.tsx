@@ -114,6 +114,12 @@ export const BurgerBuilder = () => {
     })
   }
 
+  const purchaseCancelHandler = () => {
+    setBurgerState({
+      ...burgerState,
+      purchasing: false,
+    })
+  }
   interface IDisabledInfo {
     [salad: string]: number | boolean
     bacon: number| boolean
@@ -131,7 +137,7 @@ export const BurgerBuilder = () => {
 
   return (
     <>
-      <Modal show={burgerState.purchasing}>
+      <Modal show={burgerState.purchasing} modalClosed={purchaseCancelHandler}>
         <OrderSummary ingredients={burgerState.ingredients}/> 
       </Modal>
       

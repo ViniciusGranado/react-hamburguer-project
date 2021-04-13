@@ -1,24 +1,31 @@
 import React from 'react';
+import { Backdrop } from '../Backdrop/Backdrop';
 import './Modal.css';
 
 interface IProps {
   children: JSX.Element
   show: boolean
+  modalClosed: () => void
 }
 
 export const Modal = ({
   children,
-  show
+  show,
+  modalClosed
 }: IProps) => {
   return (
-    <div
-      className='Modal'
-      style={{
-        transform: show ? 'translateY(0)' : 'translateY(-100vh)',
-        opacity: show ? '1' : '0',
-      }}
-    >
-      {children}
-    </div>
+    <>
+      <Backdrop show={show} clicked={modalClosed}/>
+
+      <div
+        className='Modal'
+        style={{
+          transform: show ? 'translateY(0)' : 'translateY(-100vh)',
+          opacity: show ? '1' : '0',
+        }}
+      >
+        {children}
+      </div>
+    </>
   );
 };
