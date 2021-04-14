@@ -31,6 +31,9 @@ export const OrderSummary = ({ingredients}: IProps) => {
       </ul>
 
       <p>Continue to Checkout?</p>
+
+      <button>CANCEL</button>
+      <button>CONTINUE</button>
     </>
   );
 }
