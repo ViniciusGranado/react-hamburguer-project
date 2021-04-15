@@ -3,7 +3,7 @@ import React from 'react';
 import './Button.css';
 
 interface IProps {
-  children: JSX.Element
+  children: string
   clicked: any
   btnType: string
 }
@@ -13,10 +13,12 @@ export const Button = ({
   clicked,
   btnType
 } : IProps) => {
-  <button
-    className={`Button ${btnType}`}
-    onClick={clicked}
-  >
-    {children}
-  </button>
+  return (
+    <button
+      className={`Button ${btnType}`}
+      onClick={clicked}
+    >
+      {children}
+    </button>
+  );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../../UI/Button/Button';
 
 interface IIngredients {
   [salad: string]: number
@@ -9,9 +10,15 @@ interface IIngredients {
 
 interface IProps {
   ingredients: IIngredients
+  purchaseCancelled: () => void
+  purchaseContinued: () => void
 }
 
-export const OrderSummary = ({ingredients}: IProps) => {
+export const OrderSummary = ({
+  ingredients,
+  purchaseCancelled,
+  purchaseContinued,
+}: IProps) => {
   const ingredientSummary = Object.keys(ingredients)
     .map((igKey) => {
       return (
@@ -32,8 +39,8 @@ export const OrderSummary = ({ingredients}: IProps) => {
 
       <p>Continue to Checkout?</p>
 
-      <button>CANCEL</button>
-      <button>CONTINUE</button>
+      <Button btnType='Danger' clicked={purchaseCancelled}>CANCEL</Button>
+      <Button btnType='Success' clicked={purchaseContinued}>CONTINUE</Button>
     </>
   );
 }
