@@ -12,12 +12,14 @@ interface IProps {
   ingredients: IIngredients
   purchaseCancelled: () => void
   purchaseContinued: () => void
+  price: number
 }
 
 export const OrderSummary = ({
   ingredients,
   purchaseCancelled,
   purchaseContinued,
+  price,
 }: IProps) => {
   const ingredientSummary = Object.keys(ingredients)
     .map((igKey) => {
@@ -37,6 +39,7 @@ export const OrderSummary = ({
         {ingredientSummary}
       </ul>
 
+      <p><strong>Total Price: U${price.toFixed(2)}</strong></p>
       <p>Continue to Checkout?</p>
 
       <Button btnType='Danger' clicked={purchaseCancelled}>CANCEL</Button>

@@ -18,7 +18,7 @@ export const BurgerBuilder = () => {
     purchasing: boolean
   }
   
-  const [burgerState, setBurgerState] = useState<IBurger>(
+  const [burgerState, setBurgerState] = useState<IBurger> (
     {
       ingredients: {
         salad: 0,
@@ -147,6 +147,7 @@ export const BurgerBuilder = () => {
           ingredients={burgerState.ingredients}
           purchaseCancelled={purchaseCancelHandler}
           purchaseContinued={purchaseContinueHandler}
+          price={burgerState.totalPrice}
         /> 
       </Modal>
       
