@@ -32,7 +32,7 @@ export const BurgerBuilder = () => {
     }
   );
 
-  const updatePurchaseState = (ingredients: any) => {
+  const updatePurchaseState = (ingredients: IBurguerIngredients, price: number) => {
     const sumIngredients = Object.keys(ingredients).reduce((acc, cur) => {
       return acc + ingredients[cur];
     }, 0);
@@ -40,6 +40,7 @@ export const BurgerBuilder = () => {
     setBurgerState({
       ...burgerState,
       ingredients: ingredients,
+      totalPrice: price,
       purchasable: sumIngredients > 0,
     });
   }
@@ -72,13 +73,7 @@ export const BurgerBuilder = () => {
     const oldPrice = burgerState.totalPrice;
     const newPrice = oldPrice + priceAddition;
     
-    setBurgerState({
-      ...burgerState,
-      ingredients: updatedIngredients,
-      totalPrice: newPrice,
-    });
-
-    updatePurchaseState(updatedIngredients);
+    updatePurchaseState(updatedIngredients, newPrice);
   }
 
   const removeIngredientHandler = (type: string) => {
@@ -98,13 +93,7 @@ export const BurgerBuilder = () => {
     const oldPrice = burgerState.totalPrice;
     const newPrice = oldPrice - priceDeduction;
     
-    setBurgerState({
-      ...burgerState,
-      ingredients: updatedIngredients,
-      totalPrice: newPrice,
-    });
-
-    updatePurchaseState(updatedIngredients);
+    updatePurchaseState(updatedIngredients, newPrice);
   }
   
   const purchaseHandler = () => {
