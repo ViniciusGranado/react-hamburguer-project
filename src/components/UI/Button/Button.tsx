@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 
 import './Button.css';
 
 interface IProps {
   children: string
-  clicked: any
+  clicked: MouseEventHandler
   btnType: string
 }
 

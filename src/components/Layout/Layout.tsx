@@ -3,7 +3,11 @@ import { Toolbar } from '../Navigation/Toolbar/Toolbar';
 
 import './Layout.css'
 
-export const Layout = ({ children }: any) => {
+interface IProps {
+  children: JSX.Element
+}
+
+export const Layout = ({ children }: IProps) => {
   return (
     <>
       <div>
