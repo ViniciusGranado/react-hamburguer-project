@@ -1,5 +1,6 @@
 import React from 'react'
 import { Toolbar } from '../Navigation/Toolbar/Toolbar';
+import { SideDrawer } from '../Navigation/SideDrawer/SideDrawer';
 
 import './Layout.css'
 
@@ -12,6 +13,7 @@ export const Layout = ({ children }: IProps) => {
     <>
       <div>
         <Toolbar />
+        <SideDrawer />
       </div>
 
       <main className='Content'>
