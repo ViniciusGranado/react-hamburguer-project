@@ -20,3 +20,9 @@
 .Toolbar .logo-container {
   height: 80%;
 }
+
+@media (max-width: 499px) {
+  .Toolbar .desktop-only {
+    display: none;
+  }
+}

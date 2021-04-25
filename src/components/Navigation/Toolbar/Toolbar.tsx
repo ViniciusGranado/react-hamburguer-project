@@ -17,7 +17,7 @@ export const Toolbar = () => {
         <Logo/>
       </div>
 
-      <nav>
+      <nav className='desktop-only'>
         <NavigationItems/>
       </nav>
     </header>
