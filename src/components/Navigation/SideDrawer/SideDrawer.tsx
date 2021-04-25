@@ -2,6 +2,7 @@ import React from 'react';
 import { Logo } from '../../Logo/Logo';
 import { NavigationItems } from '../NavigationItems/NavigationItems';
 
+import './SideDrawer.css';
 
 interface IProps {
 
@@ -10,7 +11,9 @@ interface IProps {
 export const SideDrawer = ({}: IProps) => {
   return (
     <div className='SideDrawer'>
-      <Logo />
+      <div className='logo-container'>
+        <Logo />
+      </div>
 
       <nav>
         <NavigationItems/>

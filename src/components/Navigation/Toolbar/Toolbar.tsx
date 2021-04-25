@@ -12,7 +12,11 @@ export const Toolbar = () => {
   return (
     <header className='Toolbar'>
       <div>MENU</div>
-      <Logo/>
+
+      <div className='logo-container'>
+        <Logo/>
+      </div>
+
       <nav>
         <NavigationItems/>
       </nav>
