@@ -1,17 +1,18 @@
 import React from 'react';
 import { Logo } from '../../Logo/Logo';
 import { NavigationItems } from '../NavigationItems/NavigationItems';
+import { DrawerToggle } from '../SideDrawer/DrawerToggle/DrawerToggle';
 
 import './Toolbar.css';
 
-// interface IProps = {
+interface IProps {
+  drawerToggleClicked: () => void
+}
 
-// }
-
-export const Toolbar = () => {
+export const Toolbar = ({drawerToggleClicked}: IProps) => {
   return (
     <header className='Toolbar'>
-      <div>MENU</div>
+      <DrawerToggle clicked={drawerToggleClicked}/>
 
       <div className='logo-container'>
         <Logo/>

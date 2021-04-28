@@ -14,7 +14,7 @@ export const Layout = ({ children }: IProps) => {
   }
 
   const [layoutState, setLayoutState] = useState<ILayout>({
-    showSideDrawer: true,
+    showSideDrawer: false,
   });
 
   const sideDrawerClosedHandler = () => {
@@ -23,10 +23,16 @@ export const Layout = ({ children }: IProps) => {
     })
   }
 
+  const sideDrawerToggleHandler = () => {
+    setLayoutState({
+      showSideDrawer: !layoutState.showSideDrawer,
+    });
+  }
+
   return (
     <>
       <div>
-        <Toolbar />
+        <Toolbar drawerToggleClicked={sideDrawerToggleHandler}/>
         <SideDrawer
           open={layoutState.showSideDrawer}
           closed={sideDrawerClosedHandler}
