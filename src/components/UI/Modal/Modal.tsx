@@ -8,7 +8,7 @@ interface IProps {
   modalClosed: () => void
 }
 
-export const Modal = ({
+export const Modal = React.memo(({
   children,
   show,
   modalClosed
@@ -28,4 +28,6 @@ export const Modal = ({
       </div>
     </>
   );
-};
+}, (prevProps, nextProps) => {
+  return prevProps.show === nextProps.show;
+});
