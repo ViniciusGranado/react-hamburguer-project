@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '../../UI/Button/Button';
 
+import './OrderSummary.css';
+
 interface IIngredients {
   [salad: string]: number
   bacon: number
@@ -31,7 +33,7 @@ export const OrderSummary = ({
     });
 
   return (
-    <>
+    <div className='OrderSummary'>
       <h3>Your Order</h3>
       <p>A delicious burger with the following ingredients:</p>
 
@@ -44,6 +46,6 @@ export const OrderSummary = ({
 
       <Button btnType='Danger' clicked={purchaseCancelled}>CANCEL</Button>
       <Button btnType='Success' clicked={purchaseContinued}>CONTINUE</Button>
-    </>
+    </div>
   );
 }
